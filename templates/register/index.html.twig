@@ -11,12 +11,14 @@
 <div class="col-6 bg-white p-5"></div>
 <h3>Registro</h3>
 {{form(form)}}
-</div>
 {% for flash_message in app.session.flashbag.get('success') %}
-    <div class="flash-notice">
+    <div class="flash-notice container text-center p-2">
         {{ flash_message }}
+        <button class="p-2 w-50 btn btn-success" onclick="location.href = 'http://127.0.0.1:8000/login';">Ingresar</button>
     </div>
 {% endfor %}
+</div>
+
 </div>
 
 

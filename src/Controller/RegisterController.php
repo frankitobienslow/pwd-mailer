@@ -29,7 +29,7 @@ class RegisterController extends AbstractController
             ));
             $entityManager->persist($formData);
             $entityManager->flush();
-            $this->addFlash('success', 'Usuario registrado exitosamente');
+            $this->addFlash('success', '¡Usuario registrado exitosamente!');
 
             /*try {
                 $email = (new Email())
@@ -44,7 +44,7 @@ class RegisterController extends AbstractController
                 //return new Response($th->getMessage());
             }*/
 
-            return $this->redirectToRoute(route: 'app_login');
+            return $this->redirectToRoute(route: 'app_register');
         }
 
         return $this->render('register/index.html.twig', [
