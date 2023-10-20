@@ -1,13 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{parent()}} - Inicio
+{{ parent() }} - Inicio
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .background {
+            background-image: url('{{ asset('images/dashboard-wallpaper.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+             align-items: flex-start;
+            font-size: 72px;
+            font-weight: 500;
+        }
+        .background>a{
+            font-size:20px;
+            font-weight:200px;
+            position:absolute;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-<div class="container">
-<div class="row">
-<span class="col-12 d-flex justify-content-center align-items-center" style="min-height: 100vh; font-size:72px; font-weight:500;">¡Bienvenido!</span>
-</div>
+<div class="background">
+    ¡Bienvenido!<a href="http://127.0.0.1:8000/login">Atrás</a>
 </div>
 {% endblock %}

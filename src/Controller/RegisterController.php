@@ -27,22 +27,26 @@ class RegisterController extends AbstractController
                 $user,
                 $form['password']->getData()
             ));
+            try{
             $entityManager->persist($formData);
             $entityManager->flush();
             $this->addFlash('success', '¡Usuario registrado exitosamente!');
-
-            /*try {
+            } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+                // Manejar el error de clave primaria duplicada
+                $this->addFlash('success', '¡El correo ya está en uso!');
+            }
+            try {
                 $email = (new Email())
                     ->from('pwd.mailer5.2@gmail.com')
                     ->to($form['email']->getData())
                     ->subject("Bienvenido a PWD Mailer")
                     ->text("¡Gracias por registrarte en PWD Mailer!")
-                    ->html("<img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2Fes%2Fvectors%2Femoji-saludando.html&psig=AOvVaw3FVWszHxuPP2w-ugj02vhs&ust=1697758947547000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNjx2InjgIIDFQAAAAAdAAAAABAE'>");
+                    ->html("<img src='https://st2.depositphotos.com/1001911/6524/v/450/depositphotos_65242063-stock-illustration-hat-tip-emoticon.jpg'>");
                 $mailer->send($email);
                 //return new Response("Se envio el email correctamente");
             } catch (\Throwable $th) {
                 //return new Response($th->getMessage());
-            }*/
+            }
 
             return $this->redirectToRoute(route: 'app_register');
         }

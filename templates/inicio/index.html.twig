@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}¡Inicio!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body{
+            background-image: url('{{ asset('images/inicio-fondo.png') }}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            font-weight: 500;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="card shadow-lg">
+    <div class="card-header">
+        ¡Bienvenido!
+    </div>
+    <button type="button" class="btn btn-primary mb-1" onclick="location.href = 'http://127.0.0.1:8000/login';">Login</button>
+    <button type="button" class="btn btn-success " onclick="location.href = 'http://127.0.0.1:8000/register';">Register</button>
+</div>
+{% endblock %}
