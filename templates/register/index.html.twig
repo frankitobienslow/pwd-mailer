@@ -1,26 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{parent()}} - Registrarse
+	{{parent()}}
+	- Registrarse
 {% endblock %}
 
 {% block body %}
 
-<div class="container d-flex w-50 justify-content-center align-items-center">
-<div class="row w-50">
-<div class="col-6 bg-white p-5"></div>
-<h3>Registro</h3>
-{{form(form)}}
-{% for flash_message in app.session.flashbag.get('success') %}
-    <div class="flash-notice container text-center p-2">
-        {{ flash_message }}
-        <button class="p-2 w-50 btn btn-success" onclick="location.href = 'http://127.0.0.1:8000/login';">Ingresar</button>
-    </div>
-{% endfor %}
-</div>
+	<div class="container w-50 justify-content-center d-flex">
+
+
+		<div class="col-6 bg-white p-3" style="border:2px solid #b5b3b3; border-radius:2%;">
+			<h3>Registro</h3>
+			{{form(form)}}
+				{% for flash_message in app.session.flashbag.get('success') %}
+					<div class="flash-notice container text-center p-2">
+						{{ flash_message }}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="p-2 text-center">
+			<div>¿Ya estas registrado?</div>
+			<button class="p-2 btn btn-success" onclick="location.href = 'http://127.0.0.1:8000/login';">Ingresa</button>
+		</div>
 
 </div>
-
-
-
-{% endblock %}
+	{% endblock %}
